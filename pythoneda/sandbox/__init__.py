@@ -1,9 +1,9 @@
 """
-rydnr/sandbox/artifact/infrastructure/dbus/__init__.py
+pythoneda/sandbox/__init__.py
 
-This file ensures rydnr.sandbox.artifact.infrastructure.dbus is a namespace.
+This file ensures pythoneda.sandbox is a namespace.
 
-Copyright (C) 2023-today rydnr's rydnr/sandbox-artifact-infrastructure
+Copyright (C) 2023-today rydnr's https://github.com/pythoneda-sandbox/python-artifact-infrastructure
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,6 +19,3 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 __path__ = __import__("pkgutil").extend_path(__path__, __name__)
-
-from .sandbox_artifact_dbus_signal_emitter import SandboxArtifactDbusSignalEmitter
-from .sandbox_artifact_dbus_signal_listener import SandboxArtifactDbusSignalListener

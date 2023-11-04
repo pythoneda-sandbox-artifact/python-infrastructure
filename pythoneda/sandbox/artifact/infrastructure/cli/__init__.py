@@ -1,9 +1,9 @@
 """
-rydnr/sandbox/artifact/__init__.py
+pythoneda/artifact/infrastructure/cli/__init__.py
 
-This file ensures rydnr.sandbox.artifact is a namespace.
+This file ensures pythoneda.artifact.infrastructure.cli is a namespace.
 
-Copyright (C) 2023-today rydnr's rydnr/sandbox-artifact-infrastructure
+Copyright (C) 2023-today rydnr's https://github.com/pythoneda-sandbox/python-artifact-infrastructure
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,3 +19,5 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 __path__ = __import__("pkgutil").extend_path(__path__, __name__)
+
+from .repository_folder_cli import RepositoryFolderCli

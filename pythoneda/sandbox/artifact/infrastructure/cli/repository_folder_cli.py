@@ -1,9 +1,9 @@
 """
-rydnr/sandbox/artifact/infrastructure/cli/repository_folder_cli.py
+pythoneda/sandbox/artifact/infrastructure/cli/repository_folder_cli.py
 
 This file defines the RepositoryFolderCli.
 
-Copyright (C) 2023-today rydnr's rydnr/sandbox-artifact-infrastructure
+Copyright (C) 2023-today rydnr's https://github.com/pythoneda-sandbox/python-artifact-infrastructure
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
