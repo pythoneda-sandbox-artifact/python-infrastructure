@@ -1,7 +1,7 @@
 """
-pythoneda/sandbox/artifact/infrastructure/dbus/sandbox_artifact_dbus_signal_listener.py
+pythoneda/sandbox/artifact/infrastructure/cli/sandbox_repository_folder_cli.py
 
-This file defines the SandboxArtifactDbusSignalListener class.
+This file defines the SandboxRepositoryFolderCli.
 
 Copyright (C) 2023-today rydnr's https://github.com/pythoneda-sandbox/python-artifact-infrastructure
 
@@ -18,27 +18,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-from pythoneda.shared.artifact.infrastructure.dbus import ArtifactDbusSignalListener
+from pythoneda.shared.artifact.infrastructure.cli import RepositoryFolderCli
 
 
-class SandboxArtifactDbusSignalListener(ArtifactDbusSignalListener):
+class SandboxRepositoryFolderCli(RepositoryFolderCli):
 
     """
-    A Port that listens to Sandbox-artifact-relevant d-bus signals.
+    A PrimaryPort used to gather the repository folder information.
 
-    Class name: SandboxArtifactDbusSignalListener
+    Class name: SandboxRepositoryFolderCli
 
     Responsibilities:
-        - Connect to d-bus.
-        - Listen to signals relevant to Sandbox-artifact.
+        - Parse the command-line to retrieve the information about the repository folder.
 
     Collaborators:
-        - pythoneda.application.pythoneda.PythonEDA: Receives relevant domain events.
-        - pythoneda.shared.artifact_changes.events.infrastructure.dbus.*
+        - PythonEDA subclasses: They are notified back with the information retrieved from the command line.
     """
 
     def __init__(self):
         """
-        Creates a new SandboxArtifactDbusSignalListener instance.
+        Creates a new SandboxRepositoryFolderCli instance.
         """
         super().__init__()
