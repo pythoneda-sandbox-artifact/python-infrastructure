@@ -24,7 +24,7 @@ from pythoneda.shared.artifact.infrastructure.cli import RepositoryFolderCli
 class SandboxRepositoryFolderCli(RepositoryFolderCli):
 
     """
-    A PrimaryPort used to gather the repository folder information.
+    A class to materialize RepositoryFolderCli in the Sandbox context.
 
     Class name: SandboxRepositoryFolderCli
 

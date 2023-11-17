@@ -24,7 +24,7 @@ from pythoneda.shared.artifact.infrastructure.cli import ArtifactCli
 class SandboxCli(ArtifactCli):
 
     """
-    A PrimaryPort used as git hook to send artifact events.
+    A class to materialize ArtifactCli to be used by Sandbox.
 
     Class name: SandboxCli
 

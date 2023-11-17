@@ -1,7 +1,7 @@
 """
-pythoneda/sandbox/artifact/infrastructure/dbus/sandbox_artifact_dbus_signal_listener.py
+pythoneda/sandbox/artifact/infrastructure/dbus/sandbox_dbus_signal_emitter.py
 
-This file defines the SandboxArtifactDbusSignalListener class.
+This file defines the SandboxDbusSignalEmitter class.
 
 Copyright (C) 2023-today rydnr's https://github.com/pythoneda-sandbox/python-artifact-infrastructure
 
@@ -18,27 +18,27 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-from pythoneda.shared.artifact.infrastructure.dbus import ArtifactDbusSignalListener
+from pythoneda.shared.artifact.infrastructure.dbus import ArtifactDbusSignalEmitter
 
 
-class SandboxArtifactDbusSignalListener(ArtifactDbusSignalListener):
+class SandboxDbusSignalEmitter(ArtifactDbusSignalEmitter):
 
     """
-    A Port that listens to Sandbox-artifact-relevant d-bus signals.
+    A class to materialize ArtifactDbusSignalEmitter to be used within the Sandbox artifact context.
 
-    Class name: SandboxArtifactDbusSignalListener
+    Class name: SandboxDbusSignalEmitter
 
     Responsibilities:
         - Connect to d-bus.
-        - Listen to signals relevant to Sandbox-artifact.
+        - Emit domain events as d-bus signals.
 
     Collaborators:
-        - pythoneda.application.pythoneda.PythonEDA: Receives relevant domain events.
-        - pythoneda.shared.artifact_changes.events.infrastructure.dbus.*
+        - pythoneda.application.PythonEDA: Requests emitting events.
+        - pythoneda.shared.artifact.events.infrastructure.dbus.*
     """
 
     def __init__(self):
         """
-        Creates a new SandboxArtifactDbusSignalListener instance.
+        Creates a new SandboxDbusSignalEmitter instance.
         """
         super().__init__()

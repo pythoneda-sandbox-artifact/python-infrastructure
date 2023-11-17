@@ -1,9 +1,9 @@
 """
-rydnr/sandbox/artifact/infrastructure/local_sandbox_artifact.py
+pythoneda/sandbox/artifact/infrastructure/local_sandbox_artifact.py
 
-This file defines LocalSandboxArtifact
+This file defines the LocalSandbox class.
 
-Copyright (C) 2023-today rydnr's rydnr/sandbox-artifact-infrastructure
+Copyright (C) 2023-today rydnr's pythoneda-sandbox/python-artifact-infrastructure
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -20,12 +20,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 from pythoneda import listen
 from pythoneda.shared.artifact import LocalArtifact
-from pythoneda.shared.artifact.artifact.events import (
-    ArtifactChangesCommitted,
-    ArtifactCommitPushed,
-    ArtifactCommitTagged,
-    ArtifactTagPushed,
-)
 from pythoneda.shared.artifact.events import (
     CommittedChangesPushed,
     CommittedChangesTagged,
@@ -41,12 +35,12 @@ from pythoneda.shared.nix_flake import (
 from pythoneda.shared.nix_flake.licenses import Gpl3
 
 
-class LocalSandboxArtifact(LocalArtifact):
+class LocalSandbox(LocalArtifact):
 
     """
-    A locally-cloned SandboxArtifact.
+    A locally-cloned Sandbox.
 
-    Class name: LocalSandboxArtifact
+    Class name: LocalSandbox
 
     Responsibilities:
         - Represent the Sandbox artifact.
@@ -61,7 +55,7 @@ class LocalSandboxArtifact(LocalArtifact):
 
     def __init__(self, folder: str):
         """
-        Creates a new LocalSandboxArtifact instance.
+        Creates a new LocalSandbox instance.
         :param folder: The folder with the Sandbox repository.
         :type folder: str
         """

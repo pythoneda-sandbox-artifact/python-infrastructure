@@ -20,5 +20,5 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 __path__ = __import__("pkgutil").extend_path(__path__, __name__)
 
-from .sandbox_artifact_dbus_signal_emitter import SandboxArtifactDbusSignalEmitter
-from .sandbox_artifact_dbus_signal_listener import SandboxArtifactDbusSignalListener
+from .sandbox_dbus_signal_emitter import SandboxDbusSignalEmitter
+from .sandbox_dbus_signal_listener import SandboxDbusSignalListener
