@@ -3,7 +3,7 @@ pythoneda/sandbox/artifact/infrastructure/local_sandbox_artifact.py
 
 This file defines the LocalSandbox class.
 
-Copyright (C) 2023-today rydnr's pythoneda-sandbox/python-artifact-infrastructure
+Copyright (C) 2023-today rydnr's pythoneda-sandbox-artifact/python-infrastructure
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

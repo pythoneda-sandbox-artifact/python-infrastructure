@@ -3,7 +3,7 @@ pythoneda/sandbox/artifact/infrastructure/dbus/sandbox_dbus_signal_emitter.py
 
 This file defines the SandboxDbusSignalEmitter class.
 
-Copyright (C) 2023-today rydnr's https://github.com/pythoneda-sandbox/python-artifact-infrastructure
+Copyright (C) 2023-today rydnr's https://github.com/pythoneda-sandbox-artifact/python-infrastructure
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
