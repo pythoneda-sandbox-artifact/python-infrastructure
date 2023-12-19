@@ -1,5 +1,5 @@
 """
-pythoneda/sandbox/artifact/infrastructure/local_sandbox_artifact.py
+pythoneda/sandbox/artifact/infrastructure/local_sandbox.py
 
 This file defines the LocalSandbox class.
 
