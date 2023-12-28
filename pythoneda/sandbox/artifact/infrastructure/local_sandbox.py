@@ -18,24 +18,17 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-from pythoneda import listen
-from pythoneda.shared.artifact import LocalArtifact
+from pythoneda import Event, listen
+from pythoneda.sandbox.artifact import Sandbox
 from pythoneda.shared.artifact.events import (
     CommittedChangesPushed,
     CommittedChangesTagged,
     StagedChangesCommitted,
     TagPushed,
 )
-from pythoneda.shared.nix_flake import (
-    FlakeUtilsNixFlake,
-    License,
-    NixosNixFlake,
-    PythonedaSharedPythonedaBannerNixFlake,
-)
-from pythoneda.shared.nix_flake.licenses import Gpl3
 
 
-class LocalSandbox(LocalArtifact):
+class LocalSandbox(Sandbox):
 
     """
     A locally-cloned Sandbox.
@@ -59,30 +52,25 @@ class LocalSandbox(LocalArtifact):
         :param folder: The folder with the Sandbox repository.
         :type folder: str
         """
-        flake_utils = FlakeUtilsNixFlake.default()
-        nixos = NixosNixFlake.default()
-        banner = PythonedaSharedPythonedaBannerNixFlake.default()
-        inputs = [flake_utils, nixos, banner]
-        version = self.find_out_version(folder)
-        super().__init__(
-            "pythoneda-sandbox-python",
-            self.find_out_version(folder),
-            self.url_for,
-            inputs,
-            "pythoneda",
-            "pythoneda-sandbox Python package",
-            "https://github.com/pythoneda-sandbox/python",
-            License.from_id(
-                Gpl3.license_type(),
-                "2023",
-                "rydnr",
-                "https://github.com/pythoneda-sandbox/python",
-            ),
-            ["rydnr <github@acm-sl.org>"],
-            2023,
-            "rydnr",
-            folder,
-        )
+        super().__init__(self.find_out_version(folder))
+        self._repository_folder = folder
+
+    @property
+    def repository_folder(self) -> str:
+        """
+        Retrieves the repository folder.
+        :return: Such location.
+        :rtype: str
+        """
+        return self._repository_folder
+
+    def event_refers_to_me(self, event: Event) -> bool:
+        """
+        Checks whether given event refers to this artifact.
+        :param event: The event to check.
+        :type event: pythoneda.Event
+        """
+        return event.matches_repository_folder(self.repository_folder)
 
     @classmethod
     def initialize(cls, folder: str):
@@ -107,16 +95,6 @@ class LocalSandbox(LocalArtifact):
             )
         return result
 
-    def url_for(self, version: str) -> str:
-        """
-        Retrieves the url for given version.
-        :param version: The version.
-        :type version: str
-        :return: The url.
-        :rtype: str
-        """
-        return f"https://github.com/pythoneda-sandbox-def/python/{version}"
-
     @classmethod
     @listen(StagedChangesCommitted)
     async def listen_StagedChangesCommitted(
@@ -129,7 +107,7 @@ class LocalSandbox(LocalArtifact):
         :return: An event notifying the commit has been pushed.
         :rtype: pythoneda.shared.artifact.events.CommittedChangesPushed
         """
-        return await cls.instance().commit_push(event)
+        return await cls.instance().push_commit_after_StagedChangesCommitted(event)
 
     @classmethod
     @listen(CommittedChangesPushed)
@@ -139,11 +117,11 @@ class LocalSandbox(LocalArtifact):
         """
         Gets notified of a CommittedChangesPushed event.
         :param event: The event.
-        :type event: pythoneda.shared.artifact.events.CommitedChangesPushed
+        :type event: pythoneda.shared.artifact.events.CommittedChangesPushed
         :return: An event notifying the changes have been pushed.
         :rtype: pythoneda.shared.artifact.events.CommittedChangesTagged
         """
-        return await cls.instance().commit_tag(event)
+        return await cls.instance().create_tag_after_CommittedChangesPushed(event)
 
     @classmethod
     @listen(CommittedChangesTagged)
@@ -158,4 +136,4 @@ class LocalSandbox(LocalArtifact):
         :return: An event notifying the changes have been pushed.
         :rtype: pythoneda.shared.artifact.events.TagPushed
         """
-        return await cls.instance().tag_push(event)
+        return await cls.instance().push_tag_after_CommittedChangesTagged(event)
