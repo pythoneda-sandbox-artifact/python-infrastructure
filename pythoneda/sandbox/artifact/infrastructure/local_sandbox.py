@@ -1,3 +1,4 @@
+# vim: set fileencoding=utf-8
 """
 pythoneda/sandbox/artifact/infrastructure/local_sandbox.py
 
@@ -18,8 +19,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-from pythoneda import Event, listen
 from pythoneda.sandbox.artifact import Sandbox
+from pythoneda.shared import Event, listen
 from pythoneda.shared.artifact.events import (
     CommittedChangesPushed,
     CommittedChangesTagged,
@@ -68,7 +69,7 @@ class LocalSandbox(Sandbox):
         """
         Checks whether given event refers to this artifact.
         :param event: The event to check.
-        :type event: pythoneda.Event
+        :type event: pythoneda.shared.Event
         """
         return event.matches_repository_folder(self.repository_folder)
 
